@@ -2,11 +2,8 @@ import React from 'react'
 import {
 	AppBar,
 	Container,
-	IconButton,
-	Toolbar,
-	Typography
+	Toolbar
 } from '@mui/material';
-import { Menu } from '@mui/icons-material'
 import { TodolistsList } from 'features/TodolistsList/TodolistsList'
 import './App.css'
 
@@ -17,12 +14,7 @@ function App() {
 			<div className="App">
 				<AppBar position="static">
 					<Toolbar>
-						<IconButton edge="start" color="inherit" aria-label="menu">
-							<Menu/>
-						</IconButton>
-						<Typography variant="h6">
-							News
-						</Typography>
+						Todo List
 					</Toolbar>
 				</AppBar>
 				<Container fixed>
