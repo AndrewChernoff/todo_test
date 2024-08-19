@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TodolistType } from 'features/TodolistsList/todolists/todolists.api';
 
 const initialState: TodolistDomainType[] = []
 
@@ -52,3 +51,13 @@ export type TodolistDomainType = TodolistType & {
 }
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+
+export type TodolistType = {
+	id: string
+	title: string
+}
+
+export type UpdateTodolistTitleArgType = {
+	id: string
+	title: string
+}

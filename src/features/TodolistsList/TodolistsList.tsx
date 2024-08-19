@@ -10,11 +10,9 @@ import { selectTodolists } from "features/TodolistsList/todolists/todolists.sele
 import { v4 } from 'uuid';
 
 
-
 export const TodolistsList = () => {
   const todolists = useSelector(selectTodolists);
   const tasks = useSelector(selectTasks);
-  //const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useAppDispatch()
 
 

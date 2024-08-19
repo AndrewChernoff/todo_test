@@ -7,24 +7,24 @@ import { useAppDispatch } from 'common/hooks';
 
 type TaskPropsType = {
 	task: TaskType
-	todolistId: string
+	todoListId: string
 }
 
-export const Task = memo(({task, todolistId}: TaskPropsType) => {
+export const Task = memo(({task, todoListId}: TaskPropsType) => {
 	const dispatch = useAppDispatch()
 
 	const onClickHandler = useCallback(() => {
-		dispatch(removeTask({taskId: task.id, todolistId:todolistId}))
-	}, [dispatch, task.id, todolistId]);
+		dispatch(removeTask({taskId: task.id, todoListId:todoListId}))
+	}, [dispatch, task.id, todoListId]);
 
 	const onChangeStatusHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		let newIsDoneValue = e.currentTarget.checked
-		dispatch(changeStatusTask({taskId: task.id, completed: newIsDoneValue, todolistId: todolistId}))
-	}, [dispatch, task.id, todolistId]);
+		dispatch(changeStatusTask({taskId: task.id, completed: newIsDoneValue, todoListId}))
+	}, [dispatch, task.id, todoListId]);
 
 	const onTitleChangeHandler = useCallback((newValue: string) => {
-		dispatch(updateTask({taskId: task.id, newTitle: newValue, todolistId: todolistId}))
-	}, [dispatch, task.id, todolistId]);
+		dispatch(updateTask({taskId: task.id, newTitle: newValue, todoListId}))
+	}, [dispatch, task.id, todoListId]);
 
 	return <div key={task.id} /* className={task.status === TaskStatuses.Completed ? 'is-done' : ''} */>
 		<Checkbox

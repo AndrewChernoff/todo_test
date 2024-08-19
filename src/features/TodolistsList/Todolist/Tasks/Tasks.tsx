@@ -21,7 +21,7 @@ export const Tasks = ({ todolist, tasks }: Props) => {
   return (
     <div>
       {tasksForTodolist.map((t) => (
-        <Task key={t.id} task={t} todolistId={todolist.id} />
+        <Task key={t.id} task={t} todoListId={todolist.id} />
       ))}
     </div>
   );

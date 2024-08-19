@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TaskPriorities, TaskStatuses } from 'common/enums';
 import { v4 } from 'uuid';
 import { addTodo } from '../todolists/todolists.reducer';
 
@@ -13,22 +12,22 @@ const slice = createSlice({
 		addTask: (state, action: PayloadAction<{todoListId: string, title: string}>) => {
 			const newTask = {id: v4(), todoListId: action.payload.todoListId, title: action.payload.title, completed: false}
 			
-			state[action.payload.todoListId].push(newTask as any)			
+			state[action.payload.todoListId].push(newTask as TaskType)			
 		},
-		updateTask: (state, action: PayloadAction<{todolistId: string, newTitle: string, taskId: string}>) => {
-			const tasks = state[action.payload.todolistId]
+		updateTask: (state, action: PayloadAction<{todoListId: string, newTitle: string, taskId: string}>) => {
+			const tasks = state[action.payload.todoListId]
 			const foundTask = tasks.find(el => el.id === action.payload.taskId)
 			if (foundTask) {
 				foundTask.title = action.payload.newTitle
 			}
 		},
-		removeTask: (state, action: PayloadAction<{todolistId: string, taskId: string}>) => {
-			const tasks = state[action.payload.todolistId]
+		removeTask: (state, action: PayloadAction<{todoListId: string, taskId: string}>) => {
+			const tasks = state[action.payload.todoListId]
 				const index = tasks.findIndex(t => t.id === action.payload.taskId)
 				if (index !== -1) tasks.splice(index, 1)
 		},
-		changeStatusTask: (state, action: PayloadAction<{todolistId: string, taskId: string, completed: boolean}>) => {
-			const tasks = state[action.payload.todolistId]
+		changeStatusTask: (state, action: PayloadAction<{todoListId: string, taskId: string, completed: boolean}>) => {
+			const tasks = state[action.payload.todoListId]
 
 			const task = tasks.find(el => el.id === action.payload.taskId)
 			if(task) {
@@ -48,18 +47,11 @@ const slice = createSlice({
 
 export const { addTask, updateTask, removeTask, changeStatusTask } = slice.actions
 
+
 export const tasksReducer = slice.reducer
 
 
 // types
-export type UpdateDomainTaskModelType = {
-	title?: string
-	description?: string
-	status?: TaskStatuses
-	priority?: TaskPriorities
-	startDate?: string
-	deadline?: string
-}
 
 export type TasksStateType = {
 	[key: string]: Array<TaskType>
